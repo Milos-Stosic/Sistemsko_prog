@@ -13,3 +13,18 @@ C:\Users\Stole\source\repos\Sistemsko projekat 1\obj\Debug\net7.0\refint\Sistems
 C:\Users\Stole\source\repos\Sistemsko projekat 1\obj\Debug\net7.0\Sistemsko projekat 1.pdb
 C:\Users\Stole\source\repos\Sistemsko projekat 1\obj\Debug\net7.0\Sistemsko projekat 1.genruntimeconfig.cache
 C:\Users\Stole\source\repos\Sistemsko projekat 1\obj\Debug\net7.0\ref\Sistemsko projekat 1.dll
+C:\Users\Stole\source\repos\Sistemsko_prog\bin\Debug\net7.0\Sistemsko projekat 1.exe
+C:\Users\Stole\source\repos\Sistemsko_prog\bin\Debug\net7.0\Sistemsko projekat 1.deps.json
+C:\Users\Stole\source\repos\Sistemsko_prog\bin\Debug\net7.0\Sistemsko projekat 1.runtimeconfig.json
+C:\Users\Stole\source\repos\Sistemsko_prog\bin\Debug\net7.0\Sistemsko projekat 1.dll
+C:\Users\Stole\source\repos\Sistemsko_prog\bin\Debug\net7.0\Sistemsko projekat 1.pdb
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\Sistemsko projekat 1.csproj.AssemblyReference.cache
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\Sistemsko projekat 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\Sistemsko projekat 1.AssemblyInfoInputs.cache
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\Sistemsko projekat 1.AssemblyInfo.cs
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\Sistemsko projekat 1.csproj.CoreCompileInputs.cache
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\Sistemsko projekat 1.dll
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\refint\Sistemsko projekat 1.dll
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\Sistemsko projekat 1.pdb
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\Sistemsko projekat 1.genruntimeconfig.cache
+C:\Users\Stole\source\repos\Sistemsko_prog\obj\Debug\net7.0\ref\Sistemsko projekat 1.dll

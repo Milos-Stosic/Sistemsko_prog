@@ -1,9 +1,11 @@
 ﻿
 using System.Net;
 using System.Text;
+using System.IO;
+using System.Threading;
 
 
-namespace WordCountWebServer
+namespace BrojacReciWebServer
 {
     class Program
     {
@@ -13,37 +15,51 @@ namespace WordCountWebServer
         static void Main(string[] args)
         {
             HttpListener listener = new HttpListener();
-            listener.Prefixes.Add("http://localhost:8080/");
+            listener.Prefixes.Add("http://localhost:5050/");
             listener.Start();
             Console.WriteLine("Listening...");
 
             while (true)
             {
                 HttpListenerContext context = listener.GetContext();
-                ThreadPool.QueueUserWorkItem(ProcessRequest, context);
+                ThreadPool.QueueUserWorkItem(ObradaZahteva, context);
             }
         }
 
-        static void ProcessRequest(object state)
+        static void ObradaZahteva(object state)
         {
             HttpListenerContext context = (HttpListenerContext)state;
-            string requestUrl = context.Request.Url.LocalPath;
-            Console.WriteLine("Zahtev primljen: " + requestUrl);
+            string zahtevUrl = context.Request.Url.LocalPath;
+            Console.WriteLine("Zahtev primljen: " + zahtevUrl);
 
             string odgovor = "";
 
             lock (cacheLock)
             {
-                if (cache.ContainsKey(requestUrl))
+                if (cache.ContainsKey(zahtevUrl))
                 {
-                    odgovor = cache[requestUrl];
+                    odgovor = cache[zahtevUrl];
                     Console.WriteLine("Odgovor iz cache-a");
                 }
             }
 
             if (odgovor == "")
             {
-                string putanjaF = "C:\\Users\\Stole\\source\\repos\\Sistemsko projekat 1" + requestUrl.Replace('/', '\\');
+
+                string absolutePath = Path.GetFullPath(".");
+               
+                string directoryPath = Path.GetDirectoryName(absolutePath);
+              
+                string parentDirectoryPath = Directory.GetParent(directoryPath).ToString();
+                
+                string rootFolder = Directory.GetParent(parentDirectoryPath).ToString();
+
+                string filename = context.Request.Url.Segments.Last();
+
+                string putanjaF1 = Directory.GetFiles(rootFolder, filename, SearchOption.AllDirectories).FirstOrDefault();
+            
+                string putanjaF = Path.GetDirectoryName(putanjaF1) + zahtevUrl.Replace('/', '\\');
+ 
                 if (!File.Exists(putanjaF))
                 {
                     context.Response.StatusCode = 404;
@@ -53,19 +69,20 @@ namespace WordCountWebServer
                 }
 
                 string sadrzajFajla = File.ReadAllText(putanjaF);
-                string[] words = sadrzajFajla.Split(new char[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] words = sadrzajFajla.Split(new char[] { ' ', '\t', '\n', '\r',',','.','!','?' }, StringSplitOptions.RemoveEmptyEntries);
                 int i = 0;
                 foreach (string word in words)
                 {
                     if (word.Length > 5 && char.IsUpper(word[0]))
                     {
+                        Console.WriteLine(word);
                         i++;
                     }
                 }
                 odgovor = "Broj reci sa velikim pocetnim slovom koje su duze  od 5 karaktera je: " + i;
                 lock (cacheLock)
                 {
-                    cache[requestUrl] = odgovor;
+                    cache[zahtevUrl] = odgovor;
                     Console.WriteLine("Odgovor kesiran");
                 }
             }
